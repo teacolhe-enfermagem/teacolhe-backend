@@ -22,7 +22,10 @@ Crie um arquivo `.env` na raiz do diretório `/agent` (ou onde seu `DockerFile` 
 GROQ_API_KEY=sua_chave_aqui
 ```
 
-### 3. Execução com Docker
+### 3. Acessar arquivos usados como dataset.
+- [Acessar pelo drive](https://drive.google.com/drive/folders/1-K3W47mu_WRCx63xddHUGzT2rrfpUJ7C?usp=sharing)
+
+### 4. Execução com Docker
 
 Para subir o ambiente completo, utilize o Docker Compose. O comando abaixo irá construir a imagem e iniciar os containers:
 
