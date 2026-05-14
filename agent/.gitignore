@@ -3,13 +3,14 @@ __pycache__/
 *$py.class
 *.so
 
+app/datasets/
+
 venv/
 .venv/
 env/
 ENV/
 
 .env
-.env.*
 
 .vscode/
 .idea/

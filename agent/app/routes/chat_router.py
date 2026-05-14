@@ -8,8 +8,9 @@ chat_service = ChatService()
 
 @router.post("/", response_model= ChatResponse)
 async def chat(data: ChatRequest):
-    response = await chat_service.send_message("opa")
+    response = await chat_service.send_message(data.message)
 
     return ChatResponse(
-        response=response
+        response=response["response"],
+        metrics=response["metrics"]
     )
