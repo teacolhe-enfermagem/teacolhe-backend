@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.database.connection import database
 from app.routes.auth_router import router as auth_router
+from app.routes.example import router as example_router
 
 app = FastAPI(
     title="TEAcolhe Backend",
@@ -8,6 +9,7 @@ app = FastAPI(
 )
 
 app.include_router(auth_router)
+app.include_router(example_router)
 
 @app.on_event("startup")
 async def startup():
