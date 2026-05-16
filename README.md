@@ -23,6 +23,7 @@ GROQ_API_KEY=sua_chave_aqui
 ```
 
 ### 3. Acessar arquivos usados como dataset.
+
 - [Acessar pelo drive](https://drive.google.com/drive/folders/1-K3W47mu_WRCx63xddHUGzT2rrfpUJ7C?usp=sharing)
 
 ### 4. Execução com Docker
@@ -33,7 +34,8 @@ Para subir o ambiente completo, utilize o Docker Compose. O comando abaixo irá 
 docker compose up --build
 ```
 
-O serviço estará disponível em: http://localhost:8002
+- O backend estará disponível em: http://localhost:8001
+- O agent estará disponível em: http://localhost:8002
 
 ### 🛠️ Comandos Úteis
 

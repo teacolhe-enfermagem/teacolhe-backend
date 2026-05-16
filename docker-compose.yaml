@@ -1,16 +1,16 @@
 services:
-  # agent:
-  #   build: ./agent
-  #   container_name: teacolhe-agent
-  #   ports:
-  #     - "8002:8002"
-  #   restart: unless-stopped
-  # backend:
-  #   build: ./backend
-  #   container_name: teacolhe-backend
-  #   ports:
-  #     - "8002:8002"
-  #   restart: unless-stopped
+  agent:
+    build: ./agent
+    container_name: teacolhe-agent
+    ports:
+      - "8002:8002"
+    restart: unless-stopped
+  backend:
+    build: ./backend
+    container_name: teacolhe-backend
+    ports:
+      - "8002:8001"
+    restart: unless-stopped
   postgres:
     image: postgres
     container_name: teacolhe_postgres
