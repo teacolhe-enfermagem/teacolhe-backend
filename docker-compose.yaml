@@ -9,7 +9,7 @@ services:
     build: ./backend
     container_name: teacolhe-backend
     ports:
-      - "8002:8001"
+      - "8001:8001"
     restart: unless-stopped
   postgres:
     image: postgres
