@@ -16,10 +16,25 @@ Certifique-se de ter instalado em sua máquina:
 
 ### 2. Configuração do Ambiente
 
+**1. Configuração do Agente**
+
 Crie um arquivo `.env` na raiz do diretório `/agent` (ou onde seu `DockerFile` reside) e adicione suas credenciais:
 
 ```env
 GROQ_API_KEY=sua_chave_aqui
+```
+
+**2. Configuração do Backend**
+Crie um arquivo `.env` na raiz do diretório `/backend`. Adicione a URL do banco e as chaves de segurança para criptografia dos tokens de sessão:
+
+```env
+# Importante: Como o banco roda via Docker, o host deve ser 'postgres' (nome do container), e não 'localhost'
+
+DATABASE_URL="postgresql://postgres:postgres@postgres:5432/teacolhe"
+
+SECRET_KEY="sua_chave_secreta_super_segura_aqui"
+
+REFRESH_SECRET_KEY="sua_outra_chave_secreta_para_refresh"
 ```
 
 ### 3. Acessar arquivos usados como dataset.
@@ -34,8 +49,13 @@ Para subir o ambiente completo, utilize o Docker Compose. O comando abaixo irá 
 docker compose up --build
 ```
 
-- O backend estará disponível em: http://localhost:8001
-- O agent estará disponível em: http://localhost:8002
+##### Os serviços estarão disponíveis nos seguintes endereços:
+
+- Backend API: http://localhost:8001
+
+- Agent API: http://localhost:8002
+
+- PostgreSQL: postgresql://postgres:postgres@postgres:5432/teacolhe
 
 ### 🛠️ Comandos Úteis
 
