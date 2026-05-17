@@ -20,7 +20,7 @@ class ChatRepository:
                 :autism_level,
                 'active'
             )
-            RETURNING id, user_id, autism_level, status, created_at
+            RETURNING id, user_id, autism_level, status, created_at, updated_at
         """
         return await database.fetch_one(
             query=query,
@@ -33,13 +33,26 @@ class ChatRepository:
     @staticmethod
     async def get_chat_by_id(chat_id: int):
         query = """
-            SELECT id, user_id, autism_level, status, created_at
+            SELECT id, user_id, autism_level, status, created_at, updated_at
             FROM chats
             WHERE id = :chat_id AND is_deleted = FALSE
         """
         return await database.fetch_one(
             query=query,
             values={"chat_id": chat_id}
+        )
+
+    @staticmethod
+    async def get_chats_by_user_id(user_id: int):
+        query = """
+            SELECT id, user_id, autism_level, status, created_at, updated_at
+            FROM chats
+            WHERE user_id = :user_id AND is_deleted = FALSE
+            ORDER BY created_at DESC
+        """
+        return await database.fetch_all(
+            query=query,
+            values={"user_id": user_id}
         )
 
     # ──────────────────────────────────────────

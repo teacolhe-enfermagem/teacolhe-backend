@@ -2,8 +2,6 @@ services:
   agent:
     build: ./agent
     container_name: teacolhe-agent
-    ports:
-      - "8002:8002"
     restart: unless-stopped
   backend:
     build: ./backend

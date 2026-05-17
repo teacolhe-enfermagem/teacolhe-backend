@@ -1,11 +1,9 @@
 from fastapi import APIRouter, Request
 from fastapi.security import OAuth2PasswordBearer
 from app.schemas.auth import RegisterRequest, RegisterResponse, LoginRequest, LoginResponse, RefreshTokenRequest, RefreshTokenResponse
-from app.services.auth_service import AuthService
+from app.services.auth_service import auth_service
 
 router = APIRouter(prefix="/api/auth")
-
-auth_service = AuthService()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/auth/login")
 
