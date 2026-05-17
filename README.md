@@ -1,4 +1,6 @@
-# TEAcolhe Agent - Backend API
+<img
+  src="./docs/banner.jpeg"
+/>
 
 Este é o serviço de backend do projeto **TEAcolhe**, um agente de Inteligência Artificial desenvolvido para auxiliar no atendimento de enfermagem.
 
