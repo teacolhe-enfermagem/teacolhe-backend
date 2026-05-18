@@ -104,6 +104,7 @@ class ChatService:
             "autism_level": chat["autism_level"],
             "status": chat["status"],
             "created_at": chat["created_at"],
+            "updated_at": chat["updated_at"],
             "messages": messages,
         }
 
