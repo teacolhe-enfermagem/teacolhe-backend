@@ -49,6 +49,8 @@ INTERNAL_API_KEY=teacolhe_internal_key_2026
 
 - [Acessar pelo drive](https://drive.google.com/drive/folders/1-K3W47mu_WRCx63xddHUGzT2rrfpUJ7C?usp=sharing)
 
+Esses arquivos devem ser colocados em: `agent/app/datasets`. É necessário para iniciar o agente.
+
 ### 4. Execução com Docker
 
 Para subir o ambiente completo, utilize o Docker Compose. O comando abaixo irá construir a imagem e iniciar os containers:
