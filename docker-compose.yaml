@@ -1,0 +1,25 @@
+services:
+  agent:
+    build: ./agent
+    container_name: teacolhe-agent
+    restart: unless-stopped
+  backend:
+    build: ./backend
+    container_name: teacolhe-backend
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+  postgres:
+    image: postgres
+    container_name: teacolhe_postgres
+
+    restart: always
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: teacolhe
+
+    ports:
+      - "5432:5432"
+  # postgresql://postgres:postgres@localhost:5432/teacolhe
