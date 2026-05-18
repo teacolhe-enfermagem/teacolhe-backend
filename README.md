@@ -24,6 +24,9 @@ Crie um arquivo `.env` na raiz do diretório `/agent` (ou onde seu `DockerFile` 
 
 ```env
 GROQ_API_KEY=sua_chave_aqui
+
+# Essa KEY deve ser a mesma definida no backend, serve apenas para validar a requisição.
+INTERNAL_API_KEY=teacolhe_internal_key_2026
 ```
 
 **2. Configuração do Backend**
@@ -37,6 +40,9 @@ DATABASE_URL="postgresql://postgres:postgres@postgres:5432/teacolhe"
 SECRET_KEY="sua_chave_secreta_super_segura_aqui"
 
 REFRESH_SECRET_KEY="sua_outra_chave_secreta_para_refresh"
+
+# Essa KEY deve ser a mesma definida no agent, serve apenas para validar a requisição.
+INTERNAL_API_KEY=teacolhe_internal_key_2026
 ```
 
 ### 3. Acessar arquivos usados como dataset.
