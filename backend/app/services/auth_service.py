@@ -10,6 +10,7 @@ from jose import JWTError, jwt
 
 from app.schemas.auth import RegisterRequest, LoginRequest
 from app.repositories.auth_repository import AuthRepository
+from app.services.user_log_service import user_log_service
 
 load_dotenv()
 
@@ -94,6 +95,12 @@ class AuthService:
         refresh_token_hash = self._hash_token(refresh_token)
         await AuthRepository.create_session(account["id"], refresh_token_hash, ip_address)
 
+        await user_log_service.log(
+            user_id=account["id"],
+            action="user.login",
+            metadata={"ip_address": ip_address}
+        )
+
         return {
             "access_token": access_token,
             "refresh_token": refresh_token,
@@ -143,6 +150,12 @@ class AuthService:
         new_refresh_hash = self._hash_token(new_refresh_token)
         await AuthRepository.create_session(account["id"], new_refresh_hash, ip_address)
 
+        await user_log_service.log(
+            user_id=account["id"],
+            action="user.refresh_token",
+            metadata={"ip_address": ip_address}
+        )
+
         return {
             "access_token": access_token,
             "refresh_token": new_refresh_token,
@@ -176,10 +189,17 @@ class AuthService:
         refresh_token_hash = self._hash_token(refresh_token)
         await AuthRepository.create_session(user["id"], refresh_token_hash, ip_address)
 
+        await user_log_service.log(
+            user_id=user["id"],
+            action="user.register",
+            metadata={"ip_address": ip_address}
+        )
+
         return {
             "access_token": access_token,
             "refresh_token": refresh_token,
             "token_type": "bearer"
         }
+
 
 auth_service = AuthService()
