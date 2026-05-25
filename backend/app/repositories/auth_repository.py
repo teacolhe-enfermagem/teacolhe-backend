@@ -4,6 +4,18 @@ from app.schemas.auth import RegisterRequest
 class AuthRepository:
 
     @staticmethod
+    async def get_user_by_id(user_id: int):
+        query = """
+            SELECT id, name, email, role, created_at, updated_at
+            FROM users
+            WHERE id = :user_id AND is_deleted = FALSE
+        """
+        return await database.fetch_one(
+            query=query,
+            values={"user_id": user_id}
+        )
+
+    @staticmethod
     async def get_account(email: str):
         query = """
             SELECT *
