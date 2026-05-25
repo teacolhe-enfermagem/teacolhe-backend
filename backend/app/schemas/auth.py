@@ -1,5 +1,8 @@
 import re
 
+from datetime import datetime
+from typing import Optional
+
 from pydantic import BaseModel, EmailStr, field_validator
 
 class LoginRequest(BaseModel):
@@ -94,3 +97,12 @@ class RegisterResponse(BaseModel):
 class RefreshTokenResponse(BaseModel):
     access_token: str
     refresh_token: str
+
+
+class UserResponse(BaseModel):
+    id: int
+    name: str
+    email: str
+    role: str
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
