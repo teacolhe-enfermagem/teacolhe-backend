@@ -1,5 +1,3 @@
-import re
-
 from datetime import datetime
 from typing import Optional
 
@@ -13,16 +11,9 @@ class LoginRequest(BaseModel):
     @classmethod
     def validate_password(cls, value: str):
 
-        pattern = (
-            r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)"
-            r"(?=.*[@$!%*?&._-])[A-Za-z\d@$!%*?&._-]{8,}$"
-        )
-
-        if not re.match(pattern, value):
+        if len(value) < 8:
             raise ValueError(
-                "A senha deve conter no mínimo 8 caracteres, "
-                "uma letra maiúscula, uma minúscula, um número "
-                "e um caractere especial."
+                "A senha deve conter no mínimo 8 caracteres."
             )
 
         return value
@@ -49,16 +40,9 @@ class RegisterRequest(BaseModel):
     @classmethod
     def validate_password(cls, value: str):
 
-        pattern = (
-            r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)"
-            r"(?=.*[@$!%*?&._-])[A-Za-z\d@$!%*?&._-]{8,}$"
-        )
-
-        if not re.match(pattern, value):
+        if len(value) < 8:
             raise ValueError(
-                "A senha deve conter no mínimo 8 caracteres, "
-                "uma letra maiúscula, uma minúscula, um número "
-                "e um caractere especial."
+                "A senha deve conter no mínimo 8 caracteres."
             )
 
         return value
